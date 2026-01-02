@@ -24,3 +24,4 @@ This site contains lecture notes, explanations, and resources for
 - Week 1: Introduction
 - Week 2: (to be added)
 - Week 3: (to be added)
+- Week
