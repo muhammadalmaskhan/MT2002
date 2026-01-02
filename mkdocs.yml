@@ -1,4 +1,5 @@
 site_name: MT2002 Statistical Modeling
+
 theme:
   name: material
 
@@ -6,7 +7,3 @@ nav:
   - Home: index.md
   - Week 1:
       - Lecture 1: week01/lecture1.md
-
-
-docs/week02/lecture1.md
-docs/week02/lecture2.md

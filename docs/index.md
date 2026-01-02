@@ -1,17 +1,26 @@
-# Welcome to MkDocs
+# MT2002 – Statistical Modeling
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+This site contains lecture notes, explanations, and resources for  
+**MT2002: Statistical Modeling**.
 
-## Commands
+---
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+## Course Information
+- Course code: MT2002
+- Course title: Statistical Modeling
+- Semester: (add later)
+- Instructors: (add later)
 
-## Project layout
+---
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+## How to use this site
+- Each **week** contains lecture explanations
+- Each **lecture page** explains the topic in the **context of the textbook**
+- Slides, notebooks, and datasets are linked with each lecture
+
+---
+
+## Weekly Structure
+- Week 1: Introduction
+- Week 2: (to be added)
+- Week 3: (to be added)
