@@ -6,4 +6,6 @@ theme:
 nav:
   - Home: index.md
   - Week 1:
+      - Overview: week01/index.md
       - Lecture 1: week01/lecture1.md
+      - Lecture 2: week01/lecture2.md
