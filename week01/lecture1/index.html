@@ -132,40 +132,46 @@
 <h1 id="lecture-1">Lecture 1</h1>
 <h2 id="textbook">Textbook</h2>
 <ul>
-<li>Book: Osvaldo Martin — <em>Bayesian Analysis with Python</em> (2024, Packt Publishing)</li>
-<li>Link: https://drive.google.com/file/d/1Y4V95w5-eUT2ufC85Rk-1jIccm4hh_St/view?usp=sharing</li>
-<li>Chapter: —</li>
-<li>Sections: —</li>
+<li><strong>Book:</strong> Osvaldo Martin, <em>Bayesian Analysis with Python</em> (2024), Packt Publishing  </li>
+<li>
+<p><strong>Access link:</strong> <a href="https://drive.google.com/file/d/1Y4V95w5-eUT2ufC85Rk-1jIccm4hh_St/view?usp=sharing">Access link</a></p>
+</li>
+<li>
+<p><strong>Chapter:</strong> —</p>
+</li>
+<li><strong>Sections:</strong> —</li>
 </ul>
 <hr />
 <h2 id="notes">Notes</h2>
-<h3 id="1-lecture-focus">1. Lecture Focus</h3>
-<p>This introductory lecture establishes the foundation for the course by:
-- Identifying the primary textbook
-- Setting up a reproducible Python environment
-- Installing and validating PyMC
-- Preparing students for Bayesian modeling workflows used throughout the course</p>
+<h3 id="1-purpose-of-the-lecture">1. Purpose of the Lecture</h3>
+<p>This lecture establishes the foundational setup required for the course. The goals are to:
+- Introduce the primary textbook used throughout the semester
+- Set up a reproducible Python environment
+- Install and verify the PyMC probabilistic programming library
+- Prepare students for Bayesian modeling workflows used in later lectures</p>
+<p>This lecture is primarily practical and preparatory, ensuring that all students begin the course with a consistent computational environment.</p>
 <hr />
-<h3 id="2-python-environment-for-the-course">2. Python Environment for the Course</h3>
+<h3 id="2-python-environment-overview">2. Python Environment Overview</h3>
+<p>The following configuration is recommended for the course:</p>
 <ul>
 <li><strong>Python version:</strong> 3.12.5  </li>
-<li><strong>Conda version:</strong> 25.1.1  </li>
 <li><strong>Environment manager:</strong> Conda  </li>
+<li><strong>Conda version:</strong> 25.1.1  </li>
 <li><strong>Package channel:</strong> conda-forge  </li>
 <li><strong>Primary library:</strong> PyMC  </li>
 </ul>
-<p>A dedicated Conda environment is required to ensure consistency and avoid dependency conflicts.</p>
+<p>A dedicated Conda environment is required to avoid dependency conflicts and ensure reproducibility across platforms.</p>
 <hr />
-<h3 id="3-environment-setup-pymc">3. Environment Setup (PyMC)</h3>
-<h4 id="31-install-conda">3.1 Install Conda</h4>
-<p>If Conda is not already installed:</p>
+<h3 id="3-environment-setup">3. Environment Setup</h3>
+<h4 id="31-installing-conda">3.1 Installing Conda</h4>
+<p>If Conda is not already installed, choose one of the following:</p>
 <ul>
 <li>
-<p><strong>Miniconda (recommended, lightweight):</strong><br />
+<p><strong>Miniconda (recommended):</strong><br />
   https://docs.conda.io/en/latest/miniconda.html</p>
 </li>
 <li>
-<p><strong>Anaconda (full distribution):</strong><br />
+<p><strong>Anaconda:</strong><br />
   https://www.anaconda.com/products/distribution</p>
 </li>
 </ul>
@@ -173,46 +179,33 @@
 - <strong>Windows:</strong> Anaconda Prompt<br />
 - <strong>Linux/macOS:</strong> Terminal</p>
 <hr />
-<h4 id="32-create-and-activate-a-new-conda-environment">3.2 Create and Activate a New Conda Environment</h4>
-<p>Create a clean environment:</p>
+<h4 id="32-creating-and-activating-a-conda-environment">3.2 Creating and Activating a Conda Environment</h4>
 <pre><code class="language-bash">conda create -n pymc_env python=3.12.5
 </code></pre>
-<p>Activate the environment:</p>
 <pre><code class="language-bash">conda activate pymc_env
 </code></pre>
 <hr />
-<h4 id="33-update-conda-recommended">3.3 Update Conda (Recommended)</h4>
+<h4 id="33-updating-conda-recommended">3.3 Updating Conda (Recommended)</h4>
 <pre><code class="language-bash">conda update -n base -c defaults conda
 </code></pre>
-<p>This helps prevent dependency resolution issues.</p>
 <hr />
-<h4 id="34-install-pymc-from-conda-forge">3.4 Install PyMC from conda-forge</h4>
+<h4 id="34-installing-pymc">3.4 Installing PyMC</h4>
 <pre><code class="language-bash">conda install -c conda-forge pymc
 </code></pre>
-<p>This installs PyMC along with required scientific dependencies, including:
-- NumPy
-- SciPy
-- PyTensor
-- ArviZ (usually included)</p>
-<p>No C compiler or MSYS2 installation is required.</p>
 <hr />
-<h4 id="35-optional-explicitly-install-arviz">3.5 (Optional) Explicitly Install ArviZ</h4>
+<h4 id="35-optional-installing-arviz">3.5 Optional: Installing ArviZ</h4>
 <pre><code class="language-bash">conda install -c conda-forge arviz
 </code></pre>
 <hr />
-<h4 id="36-optional-install-jupyterlab">3.6 (Optional) Install JupyterLab</h4>
-<p>For interactive lectures and notebooks:</p>
+<h4 id="36-optional-installing-jupyterlab">3.6 Optional: Installing JupyterLab</h4>
 <pre><code class="language-bash">conda install -c conda-forge jupyterlab
 </code></pre>
-<p>Launch JupyterLab:</p>
 <pre><code class="language-bash">jupyter lab
 </code></pre>
 <hr />
-<h3 id="4-verify-installation">4. Verify Installation</h3>
-<p>Start Python:</p>
+<h3 id="4-verifying-the-installation">4. Verifying the Installation</h3>
 <pre><code class="language-bash">python
 </code></pre>
-<p>Run the following commands:</p>
 <pre><code class="language-python">import pymc as pm
 import arviz as az
 import numpy as np
@@ -220,9 +213,8 @@ import numpy as np
 print(pm.__version__)
 print(az.__version__)
 </code></pre>
-<p>If no errors occur, the installation is successful.</p>
 <hr />
-<h3 id="5-minimal-pymc-test-model-sanity-check">5. Minimal PyMC Test Model (Sanity Check)</h3>
+<h3 id="5-minimal-pymc-test-model">5. Minimal PyMC Test Model</h3>
 <pre><code class="language-python">import pymc as pm
 
 with pm.Model():
@@ -230,29 +222,28 @@ with pm.Model():
     y = pm.Bernoulli(&quot;y&quot;, p=p, observed=[1, 0, 1, 1, 0])
     trace = pm.sample(1000, tune=1000, progressbar=False)
 </code></pre>
-<p>Successful sampling confirms that PyMC is fully functional.</p>
 <hr />
-<h3 id="6-common-mistakes-to-avoid">6. Common Mistakes to Avoid</h3>
+<h3 id="6-common-issues-to-avoid">6. Common Issues to Avoid</h3>
 <ul>
-<li>Installing PyMC with <code>pip</code> in the base environment</li>
-<li>Mixing <code>pip</code> and <code>conda</code> for core scientific libraries</li>
+<li>Installing PyMC using pip in the base environment</li>
+<li>Mixing pip and conda for core scientific libraries</li>
 <li>Installing unnecessary system compilers or MSYS2</li>
 </ul>
 <hr />
-<h3 id="7-summary-for-students">7. Summary for Students</h3>
+<h3 id="7-key-takeaways">7. Key Takeaways</h3>
 <ul>
-<li>Always use <strong>conda-forge</strong></li>
-<li>Always create a <strong>new Conda environment</strong></li>
-<li>No compiler is required</li>
-<li>PyMC works out-of-the-box on major platforms</li>
+<li>Always use conda-forge</li>
+<li>Always create a dedicated Conda environment</li>
+<li>No compiler installation is required</li>
+<li>PyMC works reliably on major operating systems</li>
 </ul>
 <hr />
 <h2 id="resources">Resources</h2>
 <ul>
-<li>Slides (PDF): —</li>
-<li>Slides (PPT): —</li>
-<li>Notebook: Environment setup and PyMC installation</li>
-<li>Dataset: —</li>
+<li><strong>Slides (PDF):</strong> —</li>
+<li><strong>Slides (PPT):</strong> —</li>
+<li><strong>Notebook:</strong> Environment setup and PyMC installation</li>
+<li><strong>Dataset:</strong> —</li>
 </ul></div>
             </div>
         </div>
