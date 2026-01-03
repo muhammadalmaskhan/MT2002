@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Lecture 1 - MT2002 – Statistical Modeling</title>
+        <title>Lecture 1 Notes - MT2002 - Statistical Modeling</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../..">MT2002 – Statistical Modeling</a>
+                <a class="navbar-brand" href="../..">MT2002 - Statistical Modeling</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -35,7 +35,32 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="nav-item">
-                                <a href="../" class="nav-link">Week 1</a>
+                                <a href="../.." class="nav-link">Home</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Week 1</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Lecture 1 Notes</a>
+</li>
+                                    
+<li>
+    <a href="../notebooks/lecture1/" class="dropdown-item">Lecture 1: Environment Setup and PyMC Verification</a>
+</li>
+                                    
+<li>
+    <a href="../lecture2/" class="dropdown-item">Lecture 2 Notes</a>
+</li>
+                                    
+<li>
+    <a href="../notebooks/lecture2/" class="dropdown-item">Lecture 2 : A First Bayesian Statistical Model</a>
+</li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="../../week02/" class="nav-link">Week 2</a>
@@ -87,6 +112,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../notebooks/lecture1/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -129,21 +164,165 @@
 <h1 id="lecture-1">Lecture 1</h1>
 <h2 id="textbook">Textbook</h2>
 <ul>
-<li>Book: Bayesian Modeling and Computation in Python</li>
-<li>Chapter: —</li>
-<li>Sections: —</li>
+<li><strong>Book:</strong> Osvaldo Martin, <em>Bayesian Analysis with Python</em> (2024), Packt Publishing  </li>
+<li>
+<p><strong>Access link:</strong> <a href="https://drive.google.com/file/d/1Y4V95w5-eUT2ufC85Rk-1jIccm4hh_St/view?usp=sharing">Access link</a></p>
+</li>
+<li>
+<p><strong>Chapter:</strong> —</p>
+</li>
+<li><strong>Sections:</strong> —</li>
 </ul>
 <hr />
 <h2 id="notes">Notes</h2>
-<p>Introductory lecture focused on environment setup for PyMC and course tooling.</p>
+<h3 id="1-purpose-of-the-lecture">1. Purpose of the Lecture</h3>
+<p>This lecture establishes the foundational setup required for the course. The objectives are to:</p>
+<ul>
+<li>Introduce the primary textbook used throughout the semester</li>
+<li>Define the computational environment used in the course</li>
+<li>Install and verify the PyMC probabilistic programming library</li>
+<li>Prepare students for Bayesian modeling workflows introduced in later lectures</li>
+</ul>
+<p>This lecture is primarily preparatory and practical, ensuring that all students begin the course with a consistent and reproducible computational environment.</p>
+<hr />
+<h3 id="2-course-assessment-structure">2. Course Assessment Structure</h3>
+<p>The assessment components and their respective weights for the course are summarized below.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Count (Min–Max)</th>
+<th>Weight (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quizzes</td>
+<td>4 – 8</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Assignments</td>
+<td>4 – 8</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Sessional 1</td>
+<td>1</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Sessional 2</td>
+<td>1</td>
+<td>15</td>
+</tr>
+<tr>
+<td>Final Exam</td>
+<td>1</td>
+<td>50</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="2-python-environment-overview">2. Python Environment Overview</h3>
+<p>The following configuration is recommended for the course:</p>
+<ul>
+<li><strong>Python version:</strong> 3.12.5  </li>
+<li><strong>Environment manager:</strong> Conda  </li>
+<li><strong>Conda version:</strong> 25.1.1  </li>
+<li><strong>Package channel:</strong> conda-forge  </li>
+<li><strong>Primary library:</strong> PyMC  </li>
+</ul>
+<p>A dedicated Conda environment is required to avoid dependency conflicts and ensure reproducibility across platforms.</p>
+<hr />
+<h3 id="3-environment-setup">3. Environment Setup</h3>
+<h4 id="31-installing-conda">3.1 Installing Conda</h4>
+<p>If Conda is not already installed, choose one of the following:</p>
+<ul>
+<li>
+<p><strong>Miniconda (recommended):</strong><br />
+  https://docs.conda.io/en/latest/miniconda.html</p>
+</li>
+<li>
+<p><strong>Anaconda:</strong><br />
+  https://www.anaconda.com/products/distribution</p>
+</li>
+</ul>
+<p>After installation, open:
+- <strong>Windows:</strong> Anaconda Prompt<br />
+- <strong>Linux/macOS:</strong> Terminal</p>
+<hr />
+<h4 id="32-creating-and-activating-a-conda-environment">3.2 Creating and Activating a Conda Environment</h4>
+<pre><code class="language-bash">conda create -n pymc_env python=3.12.5
+</code></pre>
+<pre><code class="language-bash">conda activate pymc_env
+</code></pre>
+<hr />
+<h4 id="33-updating-conda-recommended">3.3 Updating Conda (Recommended)</h4>
+<pre><code class="language-bash">conda update -n base -c defaults conda
+</code></pre>
+<hr />
+<h4 id="34-installing-pymc">3.4 Installing PyMC</h4>
+<pre><code class="language-bash">conda install -c conda-forge pymc
+</code></pre>
+<hr />
+<h4 id="35-optional-installing-arviz">3.5 Optional: Installing ArviZ</h4>
+<pre><code class="language-bash">conda install -c conda-forge arviz
+</code></pre>
+<hr />
+<h4 id="36-optional-installing-jupyterlab">3.6 Optional: Installing JupyterLab</h4>
+<pre><code class="language-bash">conda install -c conda-forge jupyterlab
+</code></pre>
+<pre><code class="language-bash">jupyter lab
+</code></pre>
+<hr />
+<h3 id="4-verifying-the-installation">4. Verifying the Installation</h3>
+<pre><code class="language-bash">python
+</code></pre>
+<pre><code class="language-python">import pymc as pm
+import arviz as az
+import numpy as np
+
+print(pm.__version__)
+print(az.__version__)
+</code></pre>
+<hr />
+<h3 id="5-minimal-pymc-test-model">5. Minimal PyMC Test Model</h3>
+<pre><code class="language-python">import pymc as pm
+
+with pm.Model():
+    p = pm.Beta(&quot;p&quot;, alpha=1, beta=1)
+    y = pm.Bernoulli(&quot;y&quot;, p=p, observed=[1, 0, 1, 1, 0])
+    trace = pm.sample(1000, tune=1000, progressbar=False)
+</code></pre>
+<hr />
+<h3 id="6-common-issues-to-avoid">6. Common Issues to Avoid</h3>
+<ul>
+<li>Installing PyMC using pip in the base environment</li>
+<li>Mixing pip and conda for core scientific libraries</li>
+<li>Installing unnecessary system compilers or MSYS2</li>
+</ul>
+<hr />
+<h3 id="7-key-takeaways">7. Key Takeaways</h3>
+<ul>
+<li>Always use conda-forge</li>
+<li>Always create a dedicated Conda environment</li>
+<li>No compiler installation is required</li>
+<li>PyMC works reliably on major operating systems</li>
+</ul>
 <hr />
 <h2 id="resources">Resources</h2>
 <ul>
-<li>Slides (PDF): —</li>
-<li>Slides (PPT): —</li>
-<li>Notebook: Environment setup and PyMC installation</li>
-<li>Dataset: —</li>
-</ul></div>
+<li><strong>Slides [will be availble soon] (PDF/PPT):</strong> —</li>
+<li><strong>Notebook</strong> <a href="../notebooks/lecture1/">Download lecture notebook</a></li>
+<li><strong>Dataset [N/A]:</strong> </li>
+</ul>
+<!-- - [Download dataset](datasets/dataset1.csv) --></div>
             </div>
         </div>
 

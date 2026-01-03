@@ -1,6 +1,25 @@
 # MT2002 – Statistical Modeling
 
-## Weeks
+This site contains lecture notes, explanations, and resources for the course  
+**MT2002: Statistical Modeling**.
+
+---
+
+## Course Assessment Structure
+
+| Component      | Count (Min–Max) | Weight (%) |
+|---------------|------------------|------------|
+| Quizzes       | 4 – 8            | 5          |
+| Assignments   | 4 – 8            | 15         |
+| Sessional 1   | 1                | 15         |
+| Sessional 2   | 1                | 15         |
+| Final Exam    | 1                | 50         |
+| **Total**     |                  | **100**    |
+
+---
+
+## Weekly Content
+
 - [Week 1](week01/index.md)
 - [Week 2](week02/index.md)
 - [Week 3](week03/index.md)

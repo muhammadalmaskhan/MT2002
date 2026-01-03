@@ -1,8 +1,8 @@
 # Lecture 2
 
-## Notes
-(To be written)
-
 ## Resources
-- Slides:
-- Notebook:
+- **Slides [will be availble soon] (PDF/PPT):** —
+- **Notebook** [Download lecture notebook](notebooks/lecture2.ipynb)
+- **Dataset [N/A]:** 
+<!-- - [Download dataset](datasets/dataset1.csv) -->
+

@@ -1,11 +1,18 @@
-site_name: MT2002 – Statistical Modeling
+site_name: "MT2002 - Statistical Modeling"
 
 theme:
   name: mkdocs
-
+plugins:
+  - search
+  - mkdocs-jupyter
 nav:
-  # - Home: index.md
-  - Week 1: week01/index.md
+  - Home: index.md
+  - Week 1: 
+      - Overview: week01/index.md
+      - Lecture 1 Notes: week01/lecture1.md
+      - Lecture 1 Notebook: week01/notebooks/lecture1.ipynb
+      - Lecture 2 Notes: week01/lecture2.md
+      - Lecture 2 Notebook: week01/notebooks/lecture2.ipynb
   - Week 2: week02/index.md
   - Week 3: week03/index.md
   - Week 4: week04/index.md
@@ -19,4 +26,5 @@ nav:
   - Week 12: week12/index.md
   - Week 13: week13/index.md
   - Week 14: week14/index.md
-  - Week 15: week15/index.md 
+  - Week 15: week15/index.md
+
