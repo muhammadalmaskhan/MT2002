@@ -168,7 +168,7 @@ with pm.Model():
 
 ## Resources
 - **Slides [will be availble soon] (PDF/PPT):** —
-- **Notebook** [Download lecture notebook](notebooks/lecture1.ipynb)
+- **Notebook** [click here](notebooks/lecture1.ipynb)
 - **Dataset [N/A]:** 
 <!-- - [Download dataset](datasets/dataset1.csv) -->
 

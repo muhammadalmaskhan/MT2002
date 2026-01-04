@@ -6,3 +6,6 @@
 
 ## Assessment
 (None)
+
+## Class Activity
+(None)

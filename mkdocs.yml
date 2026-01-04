@@ -1,4 +1,6 @@
-site_name: "MT2002 - Statistical Modeling"
+site_name: MT2002 – Statistical Modeling
+site_description: Course website for MT2002 Statistical Modeling. Lecture notes, notebooks, quizzes, and assignments.
+site_url: https://muhammadalmaskhan.github.io/MT2002/
 
 theme:
   name: mkdocs

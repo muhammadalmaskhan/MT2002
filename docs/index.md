@@ -1,4 +1,4 @@
-# MT2002 – Statistical Modeling
+# MT2002 : Statistical Modeling
 
 This site contains lecture notes, explanations, and resources for the course  
 **MT2002: Statistical Modeling**.
