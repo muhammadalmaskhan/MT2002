@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://muhammadalmaskhan.github.io/MT2002/week02/lecture3/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Lecture 3 - MT2002 – Statistical Modeling</title>
+        <title>Lecture 3 Notes - MT2002 – Statistical Modeling</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -62,8 +62,18 @@
 </li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a href="../" class="nav-link">Week 2</a>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Week 2</a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../" class="dropdown-item">Overview</a>
+</li>
+                                    
+<li>
+    <a href="./" class="dropdown-item active" aria-current="page">Lecture 3 Notes</a>
+</li>
+                                </ul>
                             </li>
                             <li class="nav-item">
                                 <a href="../../week03/" class="nav-link">Week 3</a>
@@ -112,6 +122,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../week03/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -136,7 +156,19 @@
               <ul class="nav flex-column">
               </ul>
             </li>
-            <li class="nav-item" data-bs-level="2"><a href="#resources" class="nav-link">Resources</a>
+            <li class="nav-item" data-bs-level="2"><a href="#why-do-we-need-distributions" class="nav-link">Why Do We Need Distributions?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#pymc-distributions-quick-reference" class="nav-link">PyMC Distributions (Quick Reference)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#prior-predictive-sampling" class="nav-link">Prior Predictive Sampling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#coin-flip-model-beta-bernoulli" class="nav-link">Coin Flip Model (Beta + Bernoulli)</a>
               <ul class="nav flex-column">
               </ul>
             </li>
@@ -149,11 +181,159 @@
 
 <h1 id="lecture-3">Lecture 3</h1>
 <h2 id="notes">Notes</h2>
-<p>(To be written)</p>
-<h2 id="resources">Resources</h2>
+<h3 id="week-2-pymc-distributions-prior-predictive-and-a-coin-flip-model">Week 2: PyMC Distributions, Prior Predictive, and a Coin Flip Model</h3>
+<hr />
+<h3 id="learning-goals">Learning Goals</h3>
 <ul>
-<li>Slides:</li>
-<li>Notebook:</li>
+<li>Understand common PyMC distributions (discrete and continuous)</li>
+<li>Learn prior predictive sampling</li>
+<li>Build a simple Bayesian coin-flip model</li>
+</ul>
+<hr />
+<h2 id="why-do-we-need-distributions">Why Do We Need Distributions?</h2>
+<p>Distributions help us model uncertainty in Bayesian modeling:</p>
+<ul>
+<li><strong>Prior</strong>: belief about unknown parameters before data  </li>
+<li><strong>Likelihood</strong>: how data is generated  </li>
+<li><strong>Posterior</strong>: updated belief after data  </li>
+</ul>
+<p>Bayesian update rule:</p>
+<div class="arithmatex">\[
+Posterior \propto Likelihood \times Prior
+\]</div>
+<hr />
+<h2 id="pymc-distributions-quick-reference">PyMC Distributions (Quick Reference)</h2>
+<h3 id="discrete-distributions">Discrete Distributions</h3>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>PyMC Name</th>
+<th>Parameters</th>
+<th>Models</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bernoulli</td>
+<td><code>pm.Bernoulli(p=...)</code></td>
+<td><code>p</code>: success probability</td>
+<td>One 0/1 outcome</td>
+</tr>
+<tr>
+<td>Binomial</td>
+<td><code>pm.Binomial(n=..., p=...)</code></td>
+<td><code>n</code>: trials, <code>p</code>: success prob</td>
+<td>Successes in <code>n</code> trials</td>
+</tr>
+<tr>
+<td>Categorical</td>
+<td><code>pm.Categorical(p=...)</code></td>
+<td><code>p</code>: category probs</td>
+<td>One of K categories</td>
+</tr>
+<tr>
+<td>Multinomial</td>
+<td><code>pm.Multinomial(n=..., p=...)</code></td>
+<td><code>n</code>: total, <code>p</code>: probs</td>
+<td>Counts across K categories</td>
+</tr>
+<tr>
+<td>Poisson</td>
+<td><code>pm.Poisson(mu=...)</code></td>
+<td><code>mu</code>: rate</td>
+<td>Count per interval</td>
+</tr>
+<tr>
+<td>ZeroInflatedPoisson</td>
+<td><code>pm.ZeroInflatedPoisson(psi=..., mu=...)</code></td>
+<td><code>psi</code>: extra zeros, <code>mu</code>: rate</td>
+<td>Counts with extra zeros</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="continuous-distributions">Continuous Distributions</h3>
+<table>
+<thead>
+<tr>
+<th>Distribution</th>
+<th>PyMC Name</th>
+<th>Parameters</th>
+<th>Models</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Beta</td>
+<td><code>pm.Beta(alpha=..., beta=...)</code></td>
+<td><code>alpha</code>, <code>beta</code>: shape</td>
+<td>Probabilities in (0,1)</td>
+</tr>
+<tr>
+<td>Normal</td>
+<td><code>pm.Normal(mu=..., sigma=...)</code></td>
+<td><code>mu</code>: mean, <code>sigma</code>: std dev</td>
+<td>Bell-shaped real values</td>
+</tr>
+<tr>
+<td>HalfNormal</td>
+<td><code>pm.HalfNormal(sigma=...)</code></td>
+<td><code>sigma</code>: scale</td>
+<td>Positive-only values</td>
+</tr>
+<tr>
+<td>Cauchy</td>
+<td><code>pm.Cauchy(alpha=..., beta=...)</code></td>
+<td><code>alpha</code>: location, <code>beta</code>: scale</td>
+<td>Heavy-tailed real values</td>
+</tr>
+<tr>
+<td>HalfCauchy</td>
+<td><code>pm.HalfCauchy(beta=...)</code></td>
+<td><code>beta</code>: scale</td>
+<td>Positive heavy-tailed</td>
+</tr>
+<tr>
+<td>Uniform</td>
+<td><code>pm.Uniform(lower=..., upper=...)</code></td>
+<td>bounds</td>
+<td>Flat in a range</td>
+</tr>
+<tr>
+<td>StudentT</td>
+<td><code>pm.StudentT(nu=..., mu=..., sigma=...)</code></td>
+<td><code>nu</code>: df, <code>mu</code>: mean, <code>sigma</code>: std dev</td>
+<td>Robust bell-shape</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="prior-predictive-sampling">Prior Predictive Sampling</h2>
+<p>Used to check if your <strong>priors make sense</strong> before observing data.</p>
+<p>Steps:</p>
+<ol>
+<li>Define priors  </li>
+<li>Sample prior predictive draws  </li>
+<li>Plot and verify results  </li>
+</ol>
+<hr />
+<h2 id="coin-flip-model-beta-bernoulli">Coin Flip Model (Beta + Bernoulli)</h2>
+<p>Convert outcomes:
+- Heads → <code>1</code>
+- Tails → <code>0</code></p>
+<p>Model:</p>
+<div class="arithmatex">\[
+p \sim Beta(1, 5)
+\]</div>
+<div class="arithmatex">\[
+y_i \sim Bernoulli(p)
+\]</div>
+<p>Goal: estimate the probability of heads <code>p</code> from observed flips.</p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li>Slides: —</li>
+<li>Notebook: <a href="../notebooks/lecture3/">visit</a></li>
 </ul></div>
             </div>
         </div>
@@ -168,6 +348,7 @@
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
         <script src="../../js/base.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script src="../../search/main.js"></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
