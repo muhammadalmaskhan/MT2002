@@ -156,6 +156,26 @@
               <ul class="nav flex-column">
               </ul>
             </li>
+            <li class="nav-item" data-bs-level="2"><a href="#why-do-we-need-distributions-in-bayesian-modeling" class="nav-link">Why Do We Need Distributions in Bayesian Modeling?</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#1-pymc-distributions-reference-table" class="nav-link">1) PyMC Distributions Reference Table</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-prior-predictive-sampling" class="nav-link">2) Prior Predictive Sampling</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-quick-visualization-pattern-plot-any-variable" class="nav-link">3) Quick Visualization Pattern (Plot Any Variable)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-example-model-coin-flips-bernoulli-likelihood" class="nav-link">4) Example Model: Coin Flips (Bernoulli Likelihood)</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
               </ul>
             </li>
         </ul>
@@ -165,7 +185,8 @@
 
 <h1 id="lecture-3">Lecture 3</h1>
 <h2 id="notes">Notes</h2>
-<h3 id="week-2-pymc-distributions-prior-predictive-and-a-coin-flip-model-followed-by-a-small-challenge">Week 2: PyMC Distributions, Prior Predictive, and a Coin Flip Model followed by a small challenge</h3>
+<h3 id="week-2-pymc-distributions-prior-predictive-and-a-coin-flip-model-with-a-small-challenge">Week 2: PyMC Distributions, Prior Predictive, and a Coin Flip Model (with a Small Challenge)</h3>
+<hr />
 <h3 id="learning-goals">Learning Goals</h3>
 <ul>
 <li>Understand common PyMC distributions (discrete and continuous)</li>
@@ -174,8 +195,40 @@
 <li>Visualize distributions using ArviZ</li>
 </ul>
 <hr />
-<h3 id="1-pymc-distributions-reference-table">1) PyMC Distributions Reference Table</h3>
-<h4 id="discrete-distributions">Discrete Distributions</h4>
+<h2 id="why-do-we-need-distributions-in-bayesian-modeling">Why Do We Need Distributions in Bayesian Modeling?</h2>
+<p>In Bayesian statistics, we model uncertainty using <strong>probability distributions</strong>.<br />
+Distributions are important because they help us describe:</p>
+<ol>
+<li>
+<p><strong>How uncertain we are about unknown values (parameters)</strong><br />
+   Example: What is the probability of heads in a coin? We don’t know the exact value, so we represent it as a distribution.</p>
+</li>
+<li>
+<p><strong>How the observed data is generated (likelihood)</strong><br />
+   Different datasets behave differently:</p>
+</li>
+<li>Binary data (0/1) fits Bernoulli</li>
+<li>Count data fits Poisson</li>
+<li>
+<p>Bell-shaped continuous data fits Normal</p>
+</li>
+<li>
+<p><strong>How our beliefs change after observing data (posterior)</strong><br />
+   Bayesian inference updates the prior belief into a posterior belief:
+   $$
+   Posterior \propto Likelihood \times Prior
+   $$</p>
+</li>
+</ol>
+<h3 id="quick-summary">Quick Summary</h3>
+<ul>
+<li><strong>Prior</strong>: distribution before seeing data  </li>
+<li><strong>Likelihood</strong>: distribution that explains the observed data  </li>
+<li><strong>Posterior</strong>: updated distribution after seeing data  </li>
+</ul>
+<hr />
+<h2 id="1-pymc-distributions-reference-table">1) PyMC Distributions Reference Table</h2>
+<h3 id="discrete-distributions">Discrete Distributions</h3>
 <table>
 <thead>
 <tr>
@@ -183,56 +236,56 @@
 <th>PyMC Name</th>
 <th>Parameters</th>
 <th>What it models</th>
-<th>Simple example use</th>
+<th>Example use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Bernoulli</td>
 <td><code>pm.Bernoulli(p=...)</code></td>
-<td><code>p</code> = probability of success</td>
+<td><code>p</code>: probability of success</td>
 <td>Single 0/1 outcome</td>
-<td>Coin flip: head=1, tail=0</td>
+<td>Coin flip (Head=1, Tail=0)</td>
 </tr>
 <tr>
 <td>Binomial</td>
 <td><code>pm.Binomial(n=..., p=...)</code></td>
-<td><code>n</code> = trials, <code>p</code> = success probability</td>
-<td># successes in <code>n</code> trials</td>
+<td><code>n</code>: trials, <code>p</code>: success probability</td>
+<td>Number of successes in <code>n</code> trials</td>
 <td>Heads in 10 flips</td>
 </tr>
 <tr>
 <td>Categorical</td>
 <td><code>pm.Categorical(p=...)</code></td>
-<td><code>p</code> = category probabilities</td>
-<td>One category from K options</td>
-<td>Class label selection</td>
+<td><code>p</code>: category probabilities</td>
+<td>One outcome from K categories</td>
+<td>Class label choice</td>
 </tr>
 <tr>
 <td>Multinomial</td>
 <td><code>pm.Multinomial(n=..., p=...)</code></td>
-<td><code>n</code> = total counts, <code>p</code> = category probabilities</td>
+<td><code>n</code>: total counts, <code>p</code>: probabilities</td>
 <td>Counts across K categories</td>
-<td>Dice results counts</td>
+<td>Dice outcome counts</td>
 </tr>
 <tr>
 <td>Poisson</td>
 <td><code>pm.Poisson(mu=...)</code></td>
-<td><code>mu</code> = average rate</td>
-<td>Counts per interval</td>
+<td><code>mu</code>: average rate</td>
+<td>Count per interval</td>
 <td>Emails per hour</td>
 </tr>
 <tr>
 <td>Zero-Inflated Poisson</td>
 <td><code>pm.ZeroInflatedPoisson(psi=..., mu=...)</code></td>
-<td><code>psi</code> = extra-zero prob, <code>mu</code> = Poisson rate</td>
-<td>Counts with extra zeros</td>
+<td><code>psi</code>: extra zeros, <code>mu</code>: rate</td>
+<td>Counts with many zeros</td>
 <td>Many zero-sales days</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h4 id="continuous-distributions">Continuous Distributions</h4>
+<h3 id="continuous-distributions">Continuous Distributions</h3>
 <table>
 <thead>
 <tr>
@@ -240,138 +293,90 @@
 <th>PyMC Name</th>
 <th>Parameters</th>
 <th>What it models</th>
-<th>Simple example use</th>
+<th>Example use</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Beta</td>
 <td><code>pm.Beta(alpha=..., beta=...)</code></td>
-<td><code>alpha</code>, <code>beta</code> = shape params</td>
-<td>Values in (0,1), probabilities</td>
-<td>Prior for probability <code>p</code></td>
+<td><code>alpha</code>, <code>beta</code>: shape</td>
+<td>Values in (0,1)</td>
+<td>Prior for probability</td>
 </tr>
 <tr>
 <td>Normal</td>
 <td><code>pm.Normal(mu=..., sigma=...)</code></td>
-<td><code>mu</code> = mean, <code>sigma</code> = std dev</td>
+<td><code>mu</code>: mean, <code>sigma</code>: std dev</td>
 <td>Bell-shaped real values</td>
-<td>Measurement noise, height</td>
+<td>Heights, measurement noise</td>
 </tr>
 <tr>
 <td>HalfNormal</td>
 <td><code>pm.HalfNormal(sigma=...)</code></td>
-<td><code>sigma</code> = scale</td>
+<td><code>sigma</code>: scale</td>
 <td>Positive-only values</td>
 <td>Prior for standard deviation</td>
 </tr>
 <tr>
 <td>Cauchy</td>
 <td><code>pm.Cauchy(alpha=..., beta=...)</code></td>
-<td><code>alpha</code> = location, <code>beta</code> = scale</td>
+<td><code>alpha</code>: location, <code>beta</code>: scale</td>
 <td>Heavy-tailed real values</td>
-<td>Robust modeling with extremes</td>
+<td>Robust modeling</td>
 </tr>
 <tr>
 <td>HalfCauchy</td>
 <td><code>pm.HalfCauchy(beta=...)</code></td>
-<td><code>beta</code> = scale</td>
-<td>Positive-only heavy-tailed</td>
+<td><code>beta</code>: scale</td>
+<td>Positive heavy-tailed</td>
 <td>Prior for scale parameters</td>
 </tr>
 <tr>
 <td>Uniform</td>
 <td><code>pm.Uniform(lower=..., upper=...)</code></td>
-<td><code>lower</code>, <code>upper</code> = bounds</td>
+<td><code>lower</code>, <code>upper</code>: bounds</td>
 <td>Flat within a range</td>
 <td>Unknown value in a range</td>
 </tr>
 <tr>
 <td>StudentT</td>
 <td><code>pm.StudentT(nu=..., mu=..., sigma=...)</code></td>
-<td><code>nu</code> = df, <code>mu</code> = mean, <code>sigma</code> = std dev</td>
-<td>Robust bell-like with heavy tails</td>
-<td>Outlier-resistant likelihood</td>
+<td><code>nu</code>: df, <code>mu</code>: mean, <code>sigma</code>: std dev</td>
+<td>Robust bell-like shape</td>
+<td>Handles outliers</td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h3 id="2-prior-predictive-sampling">2) Prior Predictive Sampling</h3>
-<p>Prior predictive sampling generates samples from your model <em>before</em> using real data.<br />
-This is used to check if your priors make reasonable predictions.</p>
-<p>Typical workflow:
-1. Define your priors (and optionally a likelihood with no observed data) \
-2. Sample from the prior predictive distribution \
-3. Plot the simulated values to see if they match your expectations \</p>
+<h2 id="2-prior-predictive-sampling">2) Prior Predictive Sampling</h2>
+<p>Prior predictive sampling generates samples from your model <strong>before</strong> using any real data.<br />
+It helps confirm that your <strong>priors produce reasonable outcomes</strong>.</p>
+<h3 id="typical-workflow">Typical workflow</h3>
+<ol>
+<li>Define priors (and optionally a likelihood without observed data).</li>
+<li>Sample from the prior predictive distribution.</li>
+<li>Plot the simulated values and check if they match expectations.</li>
+</ol>
 <hr />
-<h3 id="3-quick-visualization-pattern-plot-any-variable">3) Quick Visualization Pattern (Plot Any Variable)</h3>
-<p>Idea:
-- Pick a variable name
-- Extract its samples from <code>idata.prior</code>
-- Flatten if needed (for vector outputs like Multinomial)
-- Plot with ArviZ</p>
-<p>This makes it easy to explore any distribution with minimal changes.</p>
+<h2 id="3-quick-visualization-pattern-plot-any-variable">3) Quick Visualization Pattern (Plot Any Variable)</h2>
+<h3 id="idea">Idea</h3>
+<ul>
+<li>Pick a variable name (example: <code>"x7"</code> or <code>"x12"</code>)</li>
+<li>Extract prior samples from <code>idata.prior</code></li>
+<li>Flatten if needed (useful for vector-valued distributions like Multinomial)</li>
+<li>Plot using ArviZ</li>
+</ul>
+<p>This makes it easy to explore the shape of any distribution with minimal code changes.</p>
 <hr />
-<h3 id="4-example-model-coin-flips-bernoulli-likelihood">4) Example Model: Coin Flips (Bernoulli Likelihood)</h3>
-<h4 id="data-encoding">Data encoding</h4>
-<p>Convert string outcomes into numbers:
-- Heads -&gt; 1
-- Tails -&gt; 0</p>
-<p>Example data: <code>"HHTTHHHTTH"</code></p>
-<h4 id="model-idea">Model idea</h4>
-<p>We want to learn the probability of heads <code>p</code>.</p>
-<ul>
-<li>Prior:
-  [
-  p \sim Beta(\alpha=1,\ \beta=5)
-  ]</li>
-<li>Likelihood:
-  [
-  y_i \sim Bernoulli(p)
-  ]</li>
-</ul>
-<h4 id="what-we-learn">What we learn</h4>
-<p>After sampling, the posterior distribution gives:
-- the most likely value of <code>p</code>
-- uncertainty in <code>p</code> after seeing the coin flip results</p>
-<hr />
-<h3 id="5-short-example-bell-shaped-data-normal-likelihood">5) Short Example: Bell-Shaped Data (Normal Likelihood)</h3>
-<p>When your observed data looks approximately bell-shaped around some average value, a Normal likelihood is a good choice.</p>
-<h4 id="model-structure">Model structure</h4>
-<p>Assume you observe measurements <code>y</code>:</p>
-<ul>
-<li>
-<p>Likelihood:
-  [
-  y_i \sim Normal(\mu,\ \sigma)
-  ]</p>
-</li>
-<li>
-<p>Priors (one reasonable setup):
-  [
-  \mu \sim Normal(0,\ 10)
-  ]
-  [
-  \sigma \sim HalfNormal(5)
-  ]</p>
-</li>
-</ul>
-<h4 id="interpretation">Interpretation</h4>
-<ul>
-<li><code>mu</code> represents the center of the bell curve (average value)</li>
-<li><code>sigma</code> controls how spread out the values are</li>
-<li>the posterior estimates <code>mu</code> and <code>sigma</code> using the observed data</li>
-</ul>
-<hr />
-<h3 id="key-takeaways">Key Takeaways</h3>
-<ul>
-<li>Choose distributions based on your data type:</li>
-<li>discrete (counts/categories) vs continuous (real-valued)</li>
-<li>Prior predictive sampling helps validate your assumptions early</li>
-<li>Beta is commonly used as a prior for probabilities</li>
-<li>Bernoulli likelihood works for 0/1 data (coin flips)</li>
-<li>Normal likelihood is a standard choice for bell-shaped data</li>
-</ul>
+<h2 id="4-example-model-coin-flips-bernoulli-likelihood">4) Example Model: Coin Flips (Bernoulli Likelihood)</h2>
+<h3 id="step-1-data-encoding">Step 1: Data encoding</h3>
+<p>Convert coin-flip outcomes to numeric form:
+- Heads → <code>1</code>
+- Tails → <code>0</code></p>
+<p>Example:
+```python
+"HHTTHHHTTH"</p>
 <h3 id="resources">Resources</h3>
 <ul>
 <li>Slides: —</li>
