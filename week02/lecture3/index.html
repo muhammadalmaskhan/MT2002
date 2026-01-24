@@ -158,43 +158,6 @@
             </li>
               </ul>
             </li>
-            
-            <li class="nav-item" data-bs-level="1"><a href="#week-2-lesson-1-pymc-distributions-prior-predictive-and-a-coin-flip-model" class="nav-link">Week 2 — Lesson 1: PyMC Distributions, Prior Predictive, and a Coin Flip Model</a>
-              <ul class="nav flex-column">
-            <li class="nav-item" data-bs-level="2"><a href="#learning-goals" class="nav-link">Learning Goals</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#1-pymc-distributions-reference-table" class="nav-link">1) PyMC Distributions Reference Table</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#2-prior-predictive-sampling" class="nav-link">2) Prior Predictive Sampling</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#3-quick-visualization-pattern-plot-any-variable" class="nav-link">3) Quick Visualization Pattern (Plot Any Variable)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#4-example-model-coin-flips-bernoulli-likelihood" class="nav-link">4) Example Model: Coin Flips (Bernoulli Likelihood)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#5-short-example-bell-shaped-data-normal-likelihood" class="nav-link">5) Short Example: Bell-Shaped Data (Normal Likelihood)</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#key-takeaways" class="nav-link">Key Takeaways</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-            <li class="nav-item" data-bs-level="2"><a href="#resources" class="nav-link">Resources</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
@@ -202,8 +165,8 @@
 
 <h1 id="lecture-3">Lecture 3</h1>
 <h2 id="notes">Notes</h2>
-<h1 id="week-2-lesson-1-pymc-distributions-prior-predictive-and-a-coin-flip-model">Week 2 — Lesson 1: PyMC Distributions, Prior Predictive, and a Coin Flip Model</h1>
-<h2 id="learning-goals">Learning Goals</h2>
+<h3 id="week-2-lesson-1-pymc-distributions-prior-predictive-and-a-coin-flip-model">Week 2: Lesson 1: PyMC Distributions, Prior Predictive, and a Coin Flip Model</h3>
+<h3 id="learning-goals">Learning Goals</h3>
 <ul>
 <li>Understand common PyMC distributions (discrete and continuous)</li>
 <li>Learn prior predictive sampling (what the model believes before data)</li>
@@ -211,8 +174,8 @@
 <li>Visualize distributions using ArviZ</li>
 </ul>
 <hr />
-<h2 id="1-pymc-distributions-reference-table">1) PyMC Distributions Reference Table</h2>
-<h3 id="discrete-distributions">Discrete Distributions</h3>
+<h3 id="1-pymc-distributions-reference-table">1) PyMC Distributions Reference Table</h3>
+<h4 id="discrete-distributions">Discrete Distributions</h4>
 <table>
 <thead>
 <tr>
@@ -269,7 +232,7 @@
 </tbody>
 </table>
 <hr />
-<h3 id="continuous-distributions">Continuous Distributions</h3>
+<h4 id="continuous-distributions">Continuous Distributions</h4>
 <table>
 <thead>
 <tr>
@@ -333,7 +296,7 @@
 </tbody>
 </table>
 <hr />
-<h2 id="2-prior-predictive-sampling">2) Prior Predictive Sampling</h2>
+<h3 id="2-prior-predictive-sampling">2) Prior Predictive Sampling</h3>
 <p>Prior predictive sampling generates samples from your model <em>before</em> using real data.<br />
 This is used to check if your priors make reasonable predictions.</p>
 <p>Typical workflow:
@@ -341,7 +304,7 @@ This is used to check if your priors make reasonable predictions.</p>
 2. Sample from the prior predictive distribution
 3. Plot the simulated values to see if they match your expectations</p>
 <hr />
-<h2 id="3-quick-visualization-pattern-plot-any-variable">3) Quick Visualization Pattern (Plot Any Variable)</h2>
+<h3 id="3-quick-visualization-pattern-plot-any-variable">3) Quick Visualization Pattern (Plot Any Variable)</h3>
 <p>Idea:
 - Pick a variable name
 - Extract its samples from <code>idata.prior</code>
@@ -349,13 +312,13 @@ This is used to check if your priors make reasonable predictions.</p>
 - Plot with ArviZ</p>
 <p>This makes it easy to explore any distribution with minimal changes.</p>
 <hr />
-<h2 id="4-example-model-coin-flips-bernoulli-likelihood">4) Example Model: Coin Flips (Bernoulli Likelihood)</h2>
-<h3 id="data-encoding">Data encoding</h3>
+<h3 id="4-example-model-coin-flips-bernoulli-likelihood">4) Example Model: Coin Flips (Bernoulli Likelihood)</h3>
+<h4 id="data-encoding">Data encoding</h4>
 <p>Convert string outcomes into numbers:
 - Heads -&gt; 1
 - Tails -&gt; 0</p>
 <p>Example data: <code>"HHTTHHHTTH"</code></p>
-<h3 id="model-idea">Model idea</h3>
+<h4 id="model-idea">Model idea</h4>
 <p>We want to learn the probability of heads <code>p</code>.</p>
 <ul>
 <li>Prior:
@@ -367,14 +330,14 @@ This is used to check if your priors make reasonable predictions.</p>
   y_i \sim Bernoulli(p)
   ]</li>
 </ul>
-<h3 id="what-we-learn">What we learn</h3>
+<h4 id="what-we-learn">What we learn</h4>
 <p>After sampling, the posterior distribution gives:
 - the most likely value of <code>p</code>
 - uncertainty in <code>p</code> after seeing the coin flip results</p>
 <hr />
-<h2 id="5-short-example-bell-shaped-data-normal-likelihood">5) Short Example: Bell-Shaped Data (Normal Likelihood)</h2>
+<h3 id="5-short-example-bell-shaped-data-normal-likelihood">5) Short Example: Bell-Shaped Data (Normal Likelihood)</h3>
 <p>When your observed data looks approximately bell-shaped around some average value, a Normal likelihood is a good choice.</p>
-<h3 id="model-structure">Model structure</h3>
+<h4 id="model-structure">Model structure</h4>
 <p>Assume you observe measurements <code>y</code>:</p>
 <ul>
 <li>
@@ -393,14 +356,14 @@ This is used to check if your priors make reasonable predictions.</p>
   ]</p>
 </li>
 </ul>
-<h3 id="interpretation">Interpretation</h3>
+<h4 id="interpretation">Interpretation</h4>
 <ul>
 <li><code>mu</code> represents the center of the bell curve (average value)</li>
 <li><code>sigma</code> controls how spread out the values are</li>
 <li>the posterior estimates <code>mu</code> and <code>sigma</code> using the observed data</li>
 </ul>
 <hr />
-<h2 id="key-takeaways">Key Takeaways</h2>
+<h3 id="key-takeaways">Key Takeaways</h3>
 <ul>
 <li>Choose distributions based on your data type:</li>
 <li>discrete (counts/categories) vs continuous (real-valued)</li>
@@ -409,7 +372,7 @@ This is used to check if your priors make reasonable predictions.</p>
 <li>Bernoulli likelihood works for 0/1 data (coin flips)</li>
 <li>Normal likelihood is a standard choice for bell-shaped data</li>
 </ul>
-<h2 id="resources">Resources</h2>
+<h3 id="resources">Resources</h3>
 <ul>
 <li>Slides: —</li>
 <li>Notebook: <a href="../notebooks/lecture3/">visit</a></li>
