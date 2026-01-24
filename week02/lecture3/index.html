@@ -197,43 +197,63 @@
 <li><strong>Likelihood</strong>: how data is generated  </li>
 <li><strong>Posterior</strong>: updated belief after data  </li>
 </ul>
-<p>$
+<p>Bayesian update rule:</p>
+<div class="arithmatex">\[
 Posterior \propto Likelihood \times Prior
-$</p>
+\]</div>
 <hr />
 <h2 id="pymc-distributions-quick-reference">PyMC Distributions (Quick Reference)</h2>
-<h3 id="discrete">Discrete</h3>
+<h3 id="discrete-distributions">Discrete Distributions</h3>
 <table>
 <thead>
 <tr>
 <th>Distribution</th>
-<th>PyMC</th>
+<th>PyMC Name</th>
 <th>Parameters</th>
-<th>Use</th>
+<th>Models</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Bernoulli</td>
 <td><code>pm.Bernoulli(p=...)</code></td>
-<td><code>p</code></td>
-<td>0/1 outcomes</td>
+<td><code>p</code>: success probability</td>
+<td>One 0/1 outcome</td>
 </tr>
 <tr>
 <td>Binomial</td>
 <td><code>pm.Binomial(n=..., p=...)</code></td>
-<td><code>n</code>, <code>p</code></td>
-<td>successes in <code>n</code> trials</td>
+<td><code>n</code>: trials, <code>p</code>: success prob</td>
+<td>Successes in <code>n</code> trials</td>
+</tr>
+<tr>
+<td>Categorical</td>
+<td><code>pm.Categorical(p=...)</code></td>
+<td><code>p</code>: category probs</td>
+<td>One of K categories</td>
+</tr>
+<tr>
+<td>Multinomial</td>
+<td><code>pm.Multinomial(n=..., p=...)</code></td>
+<td><code>n</code>: total, <code>p</code>: probs</td>
+<td>Counts across K categories</td>
 </tr>
 <tr>
 <td>Poisson</td>
 <td><code>pm.Poisson(mu=...)</code></td>
-<td><code>mu</code></td>
-<td>count data</td>
+<td><code>mu</code>: rate</td>
+<td>Count per interval</td>
+</tr>
+<tr>
+<td>ZeroInflatedPoisson</td>
+<td><code>pm.ZeroInflatedPoisson(psi=..., mu=...)</code></td>
+<td><code>psi</code>: extra zeros, <code>mu</code>: rate</td>
+<td>Counts with extra zeros</td>
 </tr>
 </tbody>
 </table>
-<h3 id="continuous">Continuous</h3>
+<hr />
+<h3 id="continuous-distributions">Continuous Distributions</h3>
 <table>
 <thead>
 <tr>
@@ -267,22 +287,24 @@ $</p>
 <hr />
 <h2 id="prior-predictive-sampling">Prior Predictive Sampling</h2>
 <p>Used to check if your <strong>priors make sense</strong> before observing data.</p>
-<p>Steps:
-1. Define priors
-2. Sample prior predictive draws
-3. Plot and verify results</p>
+<p>Steps:</p>
+<ol>
+<li>Define priors  </li>
+<li>Sample prior predictive draws  </li>
+<li>Plot and verify results  </li>
+</ol>
 <hr />
 <h2 id="coin-flip-model-beta-bernoulli">Coin Flip Model (Beta + Bernoulli)</h2>
 <p>Convert outcomes:
 - Heads → <code>1</code>
 - Tails → <code>0</code></p>
-<p>Model:
-$
+<p>Model:</p>
+<div class="arithmatex">\[
 p \sim Beta(1, 5)
-$</p>
-<p>$
+\]</div>
+<div class="arithmatex">\[
 y_i \sim Bernoulli(p)
-$</p>
+\]</div>
 <p>Goal: estimate the probability of heads <code>p</code> from observed flips.</p>
 <h3 id="resources">Resources</h3>
 <ul>
