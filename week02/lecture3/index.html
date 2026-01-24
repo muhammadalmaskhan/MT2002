@@ -258,29 +258,53 @@ Posterior \propto Likelihood \times Prior
 <thead>
 <tr>
 <th>Distribution</th>
-<th>PyMC</th>
+<th>PyMC Name</th>
 <th>Parameters</th>
-<th>Use</th>
+<th>Models</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Beta</td>
 <td><code>pm.Beta(alpha=..., beta=...)</code></td>
-<td><code>alpha</code>, <code>beta</code></td>
-<td>probabilities (0,1)</td>
+<td><code>alpha</code>, <code>beta</code>: shape</td>
+<td>Probabilities in (0,1)</td>
 </tr>
 <tr>
 <td>Normal</td>
 <td><code>pm.Normal(mu=..., sigma=...)</code></td>
-<td><code>mu</code>, <code>sigma</code></td>
-<td>bell-shaped data</td>
+<td><code>mu</code>: mean, <code>sigma</code>: std dev</td>
+<td>Bell-shaped real values</td>
+</tr>
+<tr>
+<td>HalfNormal</td>
+<td><code>pm.HalfNormal(sigma=...)</code></td>
+<td><code>sigma</code>: scale</td>
+<td>Positive-only values</td>
+</tr>
+<tr>
+<td>Cauchy</td>
+<td><code>pm.Cauchy(alpha=..., beta=...)</code></td>
+<td><code>alpha</code>: location, <code>beta</code>: scale</td>
+<td>Heavy-tailed real values</td>
+</tr>
+<tr>
+<td>HalfCauchy</td>
+<td><code>pm.HalfCauchy(beta=...)</code></td>
+<td><code>beta</code>: scale</td>
+<td>Positive heavy-tailed</td>
 </tr>
 <tr>
 <td>Uniform</td>
 <td><code>pm.Uniform(lower=..., upper=...)</code></td>
 <td>bounds</td>
-<td>value in a range</td>
+<td>Flat in a range</td>
+</tr>
+<tr>
+<td>StudentT</td>
+<td><code>pm.StudentT(nu=..., mu=..., sigma=...)</code></td>
+<td><code>nu</code>: df, <code>mu</code>: mean, <code>sigma</code>: std dev</td>
+<td>Robust bell-shape</td>
 </tr>
 </tbody>
 </table>
