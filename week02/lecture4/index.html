@@ -6,9 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         
-        <link rel="canonical" href="https://muhammadalmaskhan.github.io/MT2002/week14/lecture28/">
+        <link rel="canonical" href="https://muhammadalmaskhan.github.io/MT2002/week02/lecture4/">
         <link rel="shortcut icon" href="../../img/favicon.ico">
-        <title>Lecture28 - MT2002 – Statistical Modeling</title>
+        <title>Lecture 4 Notes - MT2002 – Statistical Modeling</title>
         <link href="../../css/bootstrap.min.css" rel="stylesheet">
         <link href="../../css/fontawesome.min.css" rel="stylesheet">
         <link href="../../css/brands.min.css" rel="stylesheet">
@@ -63,19 +63,19 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Week 2</a>
+                                <a href="#" class="nav-link dropdown-toggle active" aria-current="page" role="button" data-bs-toggle="dropdown"  aria-expanded="false">Week 2</a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../../week02/" class="dropdown-item">Overview</a>
+    <a href="../" class="dropdown-item">Overview</a>
 </li>
                                     
 <li>
-    <a href="../../week02/lecture3/" class="dropdown-item">Lecture 3 Notes</a>
+    <a href="../lecture3/" class="dropdown-item">Lecture 3 Notes</a>
 </li>
                                     
 <li>
-    <a href="../../week02/lecture4/" class="dropdown-item">Lecture 4 Notes</a>
+    <a href="./" class="dropdown-item active" aria-current="page">Lecture 4 Notes</a>
 </li>
                                 </ul>
                             </li>
@@ -113,7 +113,7 @@
                                 <a href="../../week13/" class="nav-link">Week 13</a>
                             </li>
                             <li class="nav-item">
-                                <a href="../" class="nav-link">Week 14</a>
+                                <a href="../../week14/" class="nav-link">Week 14</a>
                             </li>
                             <li class="nav-item">
                                 <a href="../../week15/" class="nav-link">Week 15</a>
@@ -126,6 +126,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../lecture3/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../../week03/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -143,12 +153,123 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#lecture-4" class="nav-link">Lecture 4</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#notes" class="nav-link">Notes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#resources" class="nav-link">Resources</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-</div>
+<h1 id="lecture-4">Lecture 4</h1>
+<h2 id="notes">Notes</h2>
+<p>We studied SPI and MPI along with how Bayesian inference changes with especiallt explored SPI:</p>
+<ul>
+<li>
+<p>Data size (small vs large)</p>
+</li>
+<li>
+<p>Prior strength (weak vs strong)</p>
+</li>
+</ul>
+<h3 id="single-parameter-inference-betabernoulli">Single-parameter inference (Beta–Bernoulli)</h3>
+<p><strong>Data</strong></p>
+<ul>
+<li>
+<p>True probability: <code>p = 0.7</code></p>
+</li>
+<li>
+<p>Small sample: <code>size = 10</code></p>
+</li>
+<li>
+<p>Large sample: <code>size = 1000</code></p>
+</li>
+</ul>
+<p><strong>Model</strong></p>
+<ul>
+<li>
+<p>Likelihood: Bernoulli</p>
+</li>
+<li>
+<p>Parameter: <code>p</code></p>
+</li>
+<li>
+<p>Prior: Beta(<code>alpha</code>, <code>beta</code>)</p>
+</li>
+<li>
+<p>Weak prior: e.g., Beta(1, 1)</p>
+</li>
+<li>
+<p>Strong prior: e.g., larger <code>alpha</code>, <code>beta</code></p>
+</li>
+</ul>
+<h3 id="results-four-cases">Results (four cases)</h3>
+<p>1) <strong>Small data + weak prior</strong><br />
+Posterior is wide; results vary more.</p>
+<p>2) <strong>Large data + weak prior</strong><br />
+Posterior concentrates; data dominates.</p>
+<p>3) <strong>Small data + strong prior</strong><br />
+Posterior follows the prior strongly.</p>
+<p>4) <strong>Large data + strong prior</strong><br />
+Posterior becomes data-driven; prior influence decreases.</p>
+<h3 id="summary-betabernoulli">Summary (Beta–Bernoulli)</h3>
+<table>
+<thead>
+<tr>
+<th>Case</th>
+<th>Data size</th>
+<th>Prior strength</th>
+<th>What happens to the posterior?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Small (<code>n = 10</code>)</td>
+<td>Weak (e.g., Beta(1,1))</td>
+<td>Posterior is wide; high uncertainty; estimate varies more</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Large (<code>n = 1000</code>)</td>
+<td>Weak (e.g., Beta(1,1))</td>
+<td>Posterior concentrates; data dominates</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Small (<code>n = 10</code>)</td>
+<td>Strong (e.g., larger alpha/beta)</td>
+<td>Posterior follows the prior strongly</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Large (<code>n = 1000</code>)</td>
+<td>Strong (e.g., larger alpha/beta)</td>
+<td>Posterior becomes data-driven; prior influence decreases</td>
+</tr>
+</tbody>
+</table>
+<p>summary of experments: uncertainty in parameters interacts, and more data reduces uncertainty for both.</p>
+<h3 id="learning-point">Learning point</h3>
+<ul>
+<li>Small data : more uncertainty and more prior sensitivity</li>
+<li>Large data : tighter posterior and less prior sensitivity</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>Slides (will be availible soon): —</li>
+<li><a href="notebooks/lecture4.ipynb">Jp Notebook</a></li>
+</ul></div>
             </div>
         </div>
 
