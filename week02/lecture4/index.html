@@ -223,12 +223,86 @@ Posterior concentrates; data dominates.</p>
 Posterior follows the prior strongly.</p>
 <p>4) <strong>Large data + strong prior</strong><br />
 Posterior becomes data-driven; prior influence decreases.</p>
-<h3 id="multi-parameter-inference-mu-sigma">Multi-parameter inference (mu, sigma)</h3>
-<p>We also demonstrate inference for two parameters:
-- Data from Cauchy
-- Model uses Normal likelihood
-- Infer <code>mu</code> and <code>sigma</code> jointly</p>
-<p>Key point: uncertainty in parameters interacts, and more data reduces uncertainty for both.</p>
+<h3 id="summary-single-parameter-betabernoulli">Summary (Single-parameter: Beta–Bernoulli)</h3>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Focus</td>
+<td>Effect of <strong>data size</strong> (small vs large) and <strong>prior strength</strong> (weak vs strong) on the posterior</td>
+</tr>
+<tr>
+<td>Data generation</td>
+<td>True <code>p = 0.7</code></td>
+</tr>
+<tr>
+<td>Small dataset</td>
+<td><code>size = 10</code></td>
+</tr>
+<tr>
+<td>Large dataset</td>
+<td><code>size = 1000</code></td>
+</tr>
+<tr>
+<td>Likelihood</td>
+<td>Bernoulli</td>
+</tr>
+<tr>
+<td>Parameter</td>
+<td><code>p</code></td>
+</tr>
+<tr>
+<td>Prior</td>
+<td>Beta(<code>alpha</code>, <code>beta</code>)</td>
+</tr>
+<tr>
+<td>Weak prior</td>
+<td>Example: Beta(1, 1)</td>
+</tr>
+<tr>
+<td>Strong prior</td>
+<td>Example: larger <code>alpha</code>, <code>beta</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="results-four-cases_1">Results (four cases)</h3>
+<table>
+<thead>
+<tr>
+<th>Data size</th>
+<th>Prior strength</th>
+<th>Posterior behavior (summary)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Small</td>
+<td>Weak</td>
+<td>Posterior is wide; higher uncertainty; results vary more</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Weak</td>
+<td>Posterior concentrates; data dominates</td>
+</tr>
+<tr>
+<td>Small</td>
+<td>Strong</td>
+<td>Posterior follows the prior strongly</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Strong</td>
+<td>Posterior becomes data-driven; prior influence decreases</td>
+</tr>
+</tbody>
+</table>
+<p>main point: uncertainty in parameters interacts, and more data reduces uncertainty for both.</p>
 <h3 id="takeaways">Takeaways</h3>
 <ul>
 <li>Small data → more uncertainty and more prior sensitivity</li>
