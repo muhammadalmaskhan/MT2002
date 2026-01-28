@@ -88,5 +88,5 @@ $$
 Goal: estimate the probability of heads `p` from observed flips.
 
 ### Resources
-- Slides: —
-- Notebook: [visit](notebooks/lecture3.ipynb)
+- [Slides :](https://docs.google.com/presentation/d/1m8oVNSqcaqcnhJ06mKR1GIoLvPoSY-5N/edit?usp=sharing&ouid=103540295272503127685&rtpof=true&sd=true)
+- [Jp Notebook](notebooks/lecture3.ipynb)

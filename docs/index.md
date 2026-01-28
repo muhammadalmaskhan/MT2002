@@ -9,9 +9,9 @@ This site contains lecture notes, explanations, and resources for the course
 
 | Component      | Count (Min–Max) | Weight (%) |
 |---------------|------------------|------------|
-| Quizzes       | 4 – 8            | 5          |
-| Assignments   | 4 – 8            | 15         |
-| Sessional 1   | 1                | 15         |
+| Quizzes       | 4 – 8            | 15          |
+| Assignments   | 3 – 4            | 10         |
+| Sessional 1   | 1                | 10         |
 | Sessional 2   | 1                | 15         |
 | Final Exam    | 1                | 50         |
 | **Total**     |                  | **100**    |
