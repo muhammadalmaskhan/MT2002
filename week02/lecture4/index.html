@@ -153,12 +153,65 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
         <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#lecture-4" class="nav-link">Lecture 4</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#notes" class="nav-link">Notes</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#resources" class="nav-link">Resources</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>L4</p></div>
+<h1 id="lecture-4">Lecture 4</h1>
+<h2 id="notes">Notes</h2>
+<h3 id="focus">Focus</h3>
+<p>We study how Bayesian inference changes with:
+- Data size (small vs large)
+- Prior strength (weak vs strong)</p>
+<h3 id="single-parameter-inference-betabernoulli">Single-parameter inference (Beta–Bernoulli)</h3>
+<p><strong>Data</strong>
+- True probability: <code>p = 0.7</code>
+- Small sample: <code>size = 10</code>
+- Large sample: <code>size = 1000</code></p>
+<p><strong>Model</strong>
+- Likelihood: Bernoulli
+- Parameter: <code>p</code>
+- Prior: Beta(<code>alpha</code>, <code>beta</code>)
+  - Weak prior: e.g., Beta(1, 1)
+  - Strong prior: e.g., larger <code>alpha</code>, <code>beta</code></p>
+<h3 id="results-four-cases">Results (four cases)</h3>
+<p>1) <strong>Small data + weak prior</strong><br />
+Posterior is wide; results vary more.</p>
+<p>2) <strong>Large data + weak prior</strong><br />
+Posterior concentrates; data dominates.</p>
+<p>3) <strong>Small data + strong prior</strong><br />
+Posterior follows the prior strongly.</p>
+<p>4) <strong>Large data + strong prior</strong><br />
+Posterior becomes data-driven; prior influence decreases.</p>
+<h3 id="multi-parameter-inference-mu-sigma">Multi-parameter inference (mu, sigma)</h3>
+<p>We also demonstrate inference for two parameters:
+- Data from Cauchy
+- Model uses Normal likelihood
+- Infer <code>mu</code> and <code>sigma</code> jointly</p>
+<p>Key point: uncertainty in parameters interacts, and more data reduces uncertainty for both.</p>
+<h3 id="takeaways">Takeaways</h3>
+<ul>
+<li>Small data → more uncertainty and more prior sensitivity</li>
+<li>Large data → tighter posterior and less prior sensitivity</li>
+</ul>
+<h2 id="resources">Resources</h2>
+<ul>
+<li>Slides (PPTX): —</li>
+</ul></div>
             </div>
         </div>
 
